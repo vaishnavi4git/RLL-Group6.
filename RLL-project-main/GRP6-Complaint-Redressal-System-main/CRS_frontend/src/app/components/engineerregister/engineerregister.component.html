@@ -1,0 +1,69 @@
+<div class="row text-center text-white mb-3">
+  <div class="col-lg-7 mx-auto">
+    <h3>Engineer</h3>
+  </div>
+</div>
+<div class="container text-white" style="width: 25%">
+  <table class="center">
+    <thead>
+      <tr>
+        <th>
+          <h4 style="text-align: center">Register</h4>
+        </th>
+      </tr>
+    </thead>
+    <br />
+    <tbody>
+      <tr>
+        <td>
+          <div class="container" style="width: 150%">
+            <form (ngSubmit)="registerEngineer(f)" #f="ngForm">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="engineerEmail"
+                  [(ngModel)]="engineer.engineerEmail"
+                  placeholder="Enter email"
+                />
+              </div>
+
+              <div class="form-group">
+                <input
+                  type="password"
+                  class="form-control"
+                  name="engineerPassword"
+                  [(ngModel)]="engineer.engineerPassword"
+                  placeholder="Enter password"
+                />
+              </div>
+
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="engineerName"
+                  [(ngModel)]="engineer.engineerName"
+                  placeholder="Enter name"
+                />
+              </div>
+
+              <button type="submit" class="btn btn-primary">Submit</button
+              ><br />
+              <p>
+                For Signin click here?
+                <button
+                  type="submit"
+                  class="btn btn-success"
+                  routerLink="/engineers"
+                >
+                  Signin
+                </button>
+              </p>
+            </form>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

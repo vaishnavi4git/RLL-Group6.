@@ -1,0 +1,75 @@
+<div class="row text-center text-white mb-5">
+  <div class="col-lg-7 mx-auto">
+    <h3>Manager</h3>
+  </div>
+</div>
+<div class="container text-white" style="width: 25%">
+  <table class="center">
+    <thead>
+      <tr>
+        <th>
+          <h4 style="text-align: center">REGISTER</h4>
+        </th>
+      </tr>
+    </thead>
+    <br />
+    <tbody>
+      <tr>
+        <td>
+          <div class="container" style="width: 150%">
+            <form (ngSubmit)="registerManager(f)" #f="ngForm">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="managerEmail"
+                  [(ngModel)]="manager.managerEmail"
+                  placeholder="Enter email"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="password"
+                  class="form-control"
+                  name="managerPassword"
+                  [(ngModel)]="manager.managerPassword"
+                  placeholder="Enter password"
+                />
+              </div>
+
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="managerName"
+                  [(ngModel)]="manager.managerName"
+                  placeholder="Enter name"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="managerPincode"
+                  [(ngModel)]="manager.managerPincode"
+                  placeholder="Enter pincode"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+              <p>
+                For Signin click here?
+                <button
+                  type="submit"
+                  class="btn btn-success"
+                  routerLink="/managers"
+                >
+                  Signin
+                </button>
+              </p>
+            </form>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

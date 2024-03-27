@@ -1,0 +1,209 @@
+<div class="row text-center text-white mb-5">
+    <div class="col-lg-7 mx-auto">
+      <h1>Manager</h1>
+    </div>
+  </div>
+  <div *ngIf="login" class="container text-white" style="width: 25%">
+    <table>
+      <thead>
+        <tr>
+          <th>
+            <h4 style="text-align: center">Login</h4>
+          </th>
+        </tr>
+      </thead>
+      <br />
+      <tbody>
+        <tr>
+          <td>
+            <div class="container">
+              <form [formGroup]="loginForm" (ngSubmit)="validateManager()">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="managerEmail"
+                    formControlName="managerEmail"
+                    placeholder="Enter email"
+                    [(ngModel)]="managerEmail"
+                  />
+                </div>
+  
+                <div class="form-group">
+                  <input
+                    type="password"
+                    class="form-control"
+                    name="managerPassword"
+                    formControlName="managerPassword"
+                    placeholder="Enter password"
+                  />
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <p>
+                  For Creating an account click here?
+                  <button
+                    type="submit"
+                    class="btn btn-success"
+                    routerLink="/managerregister"
+                  >
+                    Register
+                  </button>
+                </p>
+              </form>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="managerloginStatus" class="container text-white">
+    <h3>Manager:{{ managerEmail }}</h3>
+  
+    <br />
+  
+    <button (click)="getAllComplaintsByPincode()" class="btn btn-danger">
+      View All Complaints
+    </button>
+    &nbsp;&nbsp;
+    <button
+      *ngIf="managerloginStatus"
+      (click)="getAllFeedbacks()"
+      class="btn btn-info"
+    >
+      View All Feebacks
+    </button>
+    <a routerLink="/managerregister" class="btn btn-primary">Logout</a>
+
+
+  </div>
+  <!-- -------------------------View Complaints------------------------- -->
+  <br />
+  
+  <div *ngIf="viewComplaints" class="container text-white">
+    <table text-white>
+      <thead></thead>
+      <br />
+      <tbody ng-repeat="complaint in complaints">
+       
+        <tr *ngFor="let complaint of complaints">
+          <div class="container text-white">
+            <form (ngSubmit)="engineersDuty(complaint)">
+              <td>
+                <label for="ticketId"><b>Ticket Id :</b></label
+                ><input
+                  type="text"
+                  id="ticketId"
+                  name="ticketId"
+                  value="{{ complaint.ticketId }}"
+                  style="color: rgb(19, 18, 18)"
+                  
+                />
+              </td>
+  
+              <td>
+                <label for="customerEmail"><b>Customer Email :</b></label
+                ><input
+                  type="text"
+                  name="customerEmail"
+                  value="{{ complaint.customerEmail }}"
+                  id="customerEmail"
+              style="color: rgb(17, 17, 17)"
+                
+                  
+                />
+              </td>
+  
+              <td>
+                <label for="complaint"><b>Complaint :</b></label
+                ><input
+                  type="text"
+                  name="complaint"
+                  value="{{ complaint.complaint }}"
+                  style="color: rgb(9, 9, 9)"
+                  id="complaint"
+                  
+                />
+              </td>
+  
+              <td>
+                <label for="pincode"><b>Pincode</b> :</label
+                ><input
+                  type="text"
+                  name="pincode"
+                  value="{{ complaint.pincode }}"
+                  id="pincode"
+                  style="color: rgb(22, 22, 22)"
+                  
+                />
+              </td>
+  
+              <td>
+                <label for="status"><b>Status</b> :</label
+                ><input
+                  type="text"
+                  name="status"
+                  value="{{ complaint.status }}"
+                  style="color: rgb(13, 13, 13)"
+                  id="status"
+                  
+                />
+              </td>
+  
+              <td>
+                <button
+                  *ngIf="assignEngineersButton"
+                  (click)="assignEngineers()"
+                  class="btn btn-success"
+                >
+                  Assign Engineers
+                </button>
+  
+                <select
+                  *ngIf="assignEngineersDropdown"
+                  (change)="engineerSelected($event)"
+                >
+                  <option class="h3 text-danger" value="">Assin Engineers</option>
+                  <option *ngFor="let mail of engineerEmails" value="{{ mail }}">
+                    {{ mail }}
+                  </option>
+  
+                  selectedEngineer
+                </select>
+              </td>
+              <td>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </td>
+            </form>
+          </div>
+        </tr>
+        
+      </tbody>
+    </table>
+  </div>
+  
+  <!-- -------------------view Feedbacks------------------------ -->
+  <div class="container text-white" style="width: 25%; padding: 1rem">
+    <div *ngIf="viewFeedbacks">
+      <table>
+        <thead>
+          <tr>
+            <th style="padding-right: 5px">Feedback Id</th>
+            <th style="padding-right: 5px">Ticket Id</th>
+            <th style="padding-right: 5px">Customer Email</th>
+            <th style="padding-right: 5px">Feedback</th>
+          </tr>
+        </thead>
+        <br />
+        <tbody>
+          <tr *ngFor="let feedback of feedbacks">
+            <td style="padding-right: 5px" scope="row">
+              {{ feedback.feedbackId }}
+            </td>
+            <td style="padding-right: 5px">{{ feedback.ticketId }}</td>
+            <td style="padding-right: 5px">{{ feedback.customerEmail }}</td>
+            <td style="padding-right: 5px">{{ feedback.feedback }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

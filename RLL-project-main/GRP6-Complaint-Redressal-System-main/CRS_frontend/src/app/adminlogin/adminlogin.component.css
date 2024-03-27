@@ -1,0 +1,26 @@
+body {
+  background: #009fff; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #ec2f4b,
+    #009fff
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  
+background-image: url('https://tse2.mm.bing.net/th?id=OIP.JkcYOovXGNijhryz145aHwHaEK&pid=Api&P=0&h=180'); /* Path to your background image */
+  background-size: cover; /* Cover the entire background */
+  background-repeat: no-repeat; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.container {
+  margin: 10rem auto;
+  width: 20em;
+  background-color: rgba(5, 18, 122, 0.775);
+}
+
+input {
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+html {
+  background-image: linear-gradient(#993d00, white);
+}

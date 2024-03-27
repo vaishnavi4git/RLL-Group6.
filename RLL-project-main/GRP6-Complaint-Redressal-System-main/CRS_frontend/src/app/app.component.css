@@ -1,0 +1,20 @@
+a {
+  background-color:#fff200;
+  color: rgb(0, 0, 0);
+  padding: 1em 1.5em;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding-bottom: 1rem;
+  border-radius: 4px;
+}
+
+/* Contents of styles.css */
+
+/* Your existing CSS code */
+
+body {
+  
+  background-image: url('https://tse2.mm.bing.net/th?id=OIP.JkcYOovXGNijhryz145aHwHaEK&pid=Api&P=0&h=180'); /* Path to your background image */
+  background-size: cover; /* Cover the entire background */
+  background-repeat: no-repeat; /* Do not repeat the background image */
+}

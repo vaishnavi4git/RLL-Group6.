@@ -1,0 +1,98 @@
+<div class="row text-center text-white mb-5">
+  <div class="col-lg-7 mx-auto">
+    <h1>Customer</h1>
+  </div>
+</div>
+<div class="container text-white" style="width: 25%">
+  <table class="center">
+    <thead>
+      <tr>
+        <th>
+          <h4 style="text-align: center">Register</h4>
+        </th>
+      </tr>
+    </thead>
+    <br />
+    <tbody>
+      <tr>
+        <td>
+          <div class="container-fluid" style="width: 150%">
+            <form (ngSubmit)="registerCustomer(f)" #f="ngForm">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="customerEmail"
+                  [(ngModel)]="customer.customerEmail"
+                  placeholder="Enter email"
+                />
+              </div>
+
+              <div class="form-group">
+                <input
+                  type="password"
+                  class="form-control"
+                  name="customerPassword"
+                  [(ngModel)]="customer.customerPassword"
+                  placeholder="Enter password"
+                />
+              </div>
+
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="customerName"
+                  [(ngModel)]="customer.customerName"
+                  placeholder="Enter name"
+                />
+              </div>
+
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="customerMobile"
+                  [(ngModel)]="customer.customerMobile"
+                  placeholder="Enter mobile number"
+                />
+              </div>
+
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="customerAddress"
+                  [(ngModel)]="customer.customerAddress"
+                  placeholder="Enter address"
+                />
+              </div>
+
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="customerPincode"
+                  [(ngModel)]="customer.customerPincode"
+                  placeholder="Enter pincode"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button
+              ><br />
+              <p>
+                For Signin click here?
+                <button
+                  type="submit"
+                  class="btn btn-success"
+                  routerLink="/customers"
+                >
+                  Signin
+                </button>
+              </p>
+            </form>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

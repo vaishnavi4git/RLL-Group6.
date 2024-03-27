@@ -1,0 +1,400 @@
+<div class="coloum" style="justify-content: center">
+  <div style="padding: 1rem">
+    <button
+      type="submit"
+      class="btn btn-primary btn-lg"
+      (click)="viewManagers()"
+    >
+      <b><i>View Managers</i> </b>
+    </button>
+  </div>
+  <div style="padding: 1rem">
+    <button
+      type="submit"
+      class="btn btn-primary btn-lg"
+      (click)="viewEngineers()"
+    >
+      <b><i>View Engineers</i></b>
+    </button>
+  </div>
+  <div style="padding: 1rem">
+    <button
+      type="submit"
+      class="btn btn-primary btn-lg"
+      (click)="viewCustomers()"
+    >
+      <b><i>View Customers</i></b>
+    </button>
+  </div>
+  <div style="padding: 1rem">
+    <button
+      type="submit"
+      class="btn btn-primary btn-lg"
+      (click)="viewComplaints()"
+    >
+      <b><i>View Complaints</i></b>
+    </button>
+  </div>
+  <div style="padding: 1rem">
+    <button
+      type="submit"
+      class="btn btn-primary btn-lg"
+      (click)="viewFeedbacks()"
+    >
+      <b><i>View Feedbacks</i></b>
+    </button>
+  </div>
+  
+    <a routerLink="/adminlogin" class="btn btn-primary">Logout</a>
+</div>
+
+<div
+  *ngIf="anyButtonClicked"
+  class="container"
+  style="background-color: #0302479d"
+>
+  <button (click)="closeAll()" class="btn btn-info">Close All</button><br />
+
+  
+</div>
+<!-- ------------------------------------Managers------------------------------------ -->
+<!-- view Managers -->
+<div
+  *ngIf="viewManagersStatus"
+  class="container"
+  style="background-color: #05034d9d"
+>
+  <br />
+  <div class="col-lg-7 mx-auto">
+    <h4 class="text-white">
+      <b><i>Managers</i></b>
+    </h4>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col" class="text-white">Manager Email</th>
+        <th scope="col" class="text-white">Manager Name</th>
+        <th scope="col" class="text-white">Manager Pincode</th>
+      </tr>
+    </thead>
+    <br />
+    <tbody>
+      <tr *ngFor="let manager of managers">
+        <td scope="row" class="text-white">{{ manager.managerEmail }}</td>
+        <td class="text-white">{{ manager.managerName }}</td>
+        <td class="text-white">{{ manager.managerPincode }}</td>
+        <td>
+          <button (click)="deleteManager(manager)" class="btn btn-danger">
+            <i class="fa fa-trash"></i>
+          </button>
+        </td>
+        <td>
+          <button (click)="updateManager(manager)" class="btn btn-primary">
+            <i class="fa fa-edit"></i>
+          </button>
+        </td>
+      </tr>
+      <tr *ngIf="updateManagerStatus">
+        <div style="width: 100%">
+          <form (ngSubmit)="newManagerUpdates()">
+            <h4 class="text-white">Update Manager Pincode</h4>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                name="managerPincode"
+                [(ngModel)]="managerUpdating.managerPincode"
+                placeholder="Enter new pincode"
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+          </form>
+        </div>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ------------------------------------Engineers------------------------------------ -->
+<!-- View Engineers -->
+<div
+  *ngIf="viewEngineersStatus"
+  class="container"
+  style="background-color: #05034d9d"
+>
+  <br />
+  <div class="col-lg-7 mx-auto">
+    <h4 class="text-white">
+      <b><i>Engineers</i></b>
+    </h4>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col" class="text-white">Engineer Email</th>
+        <th scope="col" class="text-white">Engineer Name</th>
+      </tr>
+    </thead>
+    <br />
+    <tbody>
+      <tr *ngFor="let engineer of engineers">
+        <td scope="row" class="text-white">{{ engineer.engineerEmail }}</td>
+        <td class="text-white">{{ engineer.engineerName }}</td>
+
+        <td>
+          <button (click)="deleteEngineer(engineer)" class="btn btn-danger">
+            <i class="fa fa-trash"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- ------------------------------------Customers------------------------------------ -->
+<!-- View Customers -->
+<div
+  *ngIf="viewCustomersStatus"
+  class="container"
+  style="background-color: #05034d9d"
+>
+  <br />
+  <div class="col-lg-7 mx-auto">
+    <h4 class="text-white">
+      <b><i>Customers</i></b>
+    </h4>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col" class="text-white">Customer Email</th>
+        <th scope="col" class="text-white">Customer Name</th>
+        <th scope="col" class="text-white">Customer Mobile</th>
+        <th scope="col" class="text-white">Customer Address</th>
+        <th scope="col" class="text-white">Customer Pincode</th>
+      </tr>
+    </thead>
+    <br />
+    <tbody>
+      <tr *ngFor="let customer of customers">
+        <td scope="row" class="text-white">{{ customer.customerEmail }}</td>
+        <td class="text-white">{{ customer.customerName }}</td>
+        <td class="text-white">{{ customer.customerMobile }}</td>
+        <td class="text-white">{{ customer.customerAddress }}</td>
+        <td class="text-white">{{ customer.customerPincode }}</td>
+
+        <td>
+          <button (click)="deleteCustomer(customer)" class="btn btn-danger">
+            <i class="fa fa-trash"></i>
+          </button>
+        </td>
+        <td>
+          <button (click)="updateCustomer(customer)" class="btn btn-primary">
+            <i class="fa fa-edit"></i>
+          </button>
+        </td>
+      </tr>
+      <tr *ngIf="updateCustomerStatus">
+        <div style="width: 100%">
+          <form (ngSubmit)="newCustomerUpdates()">
+            <h4 class="text-white">Update Customer Pincode</h4>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                name="customerPincode"
+                [(ngModel)]="customerUpdating.customerPincode"
+                placeholder="Enter new pincode"
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+          </form>
+        </div>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- ------------------------------------Complaints------------------------------------ -->
+<!-- View Complaints -->
+<div
+  *ngIf="viewComplaintsStatus"
+  class="container"
+  style="background-color: #05034d9d"
+>
+  <br />
+  <div class="col-lg-7 mx-auto">
+    <h4 class="text-white">
+      <b><i>Complaints</i></b>
+    </h4>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col" class="text-white">Ticket Id</th>
+        <th scope="col" class="text-white">Customer Email</th>
+        <th scope="col" class="text-white">Complaint</th>
+        <th scope="col" class="text-white">Pincode</th>
+        <th scope="col" class="text-white">status</th>
+        <th scope="col" class="text-white">Review</th>
+      </tr>
+    </thead>
+    <br />
+    <tbody>
+      <tr *ngFor="let complaint of complaints">
+        <td scope="row" class="text-white">{{ complaint.ticketId }}</td>
+        <td class="text-white">{{ complaint.customerEmail }}</td>
+        <td class="text-white">{{ complaint.complaint }}</td>
+        <td class="text-white">{{ complaint.pincode }}</td>
+        <td class="text-white">{{ complaint.status }}</td>
+        <td class="text-white">
+          <button (click)="deleteComplaint(complaint)" class="btn btn-danger">
+            <i class="fa fa-trash"></i>
+          </button>
+        </td>
+
+        <td>
+          <button (click)="updateComplaint(complaint)" class="btn btn-primary">
+            <i class="fa fa-edit"></i>
+          </button>
+        </td>
+      </tr>
+      <tr *ngIf="updateComplaintStatus">
+        <div>
+          <form (ngSubmit)="newComplaintUpdates()">
+            <h4 class="text-white">Update Complaint Pincode</h4>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                name="customerEmail"
+                [(ngModel)]="complaintUpdating.customerEmail"
+                placeholder="Enter email"
+              />
+            </div>
+
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                name="pincode"
+                [(ngModel)]="complaintUpdating.pincode"
+                placeholder="Enter pincode"
+              />
+            </div>
+
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                name="complaint"
+                [(ngModel)]="complaintUpdating.complaint"
+                placeholder="Enter complaint"
+              />
+            </div>
+
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                name="status"
+                [(ngModel)]="complaintUpdating.status"
+                placeholder="Enter status"
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+          </form>
+        </div>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- ------------------------------------Feedbacks------------------------------------ -->
+<!-- view Feedbacks -->
+<div
+  *ngIf="viewFeedbacksStatus"
+  class="container"
+  style="background-color: #05034d9d"
+>
+  <br />
+  <div class="col-lg-7 mx-auto">
+    <h4 class="text-white">
+      <b><i>Feedbacks</i></b>
+    </h4>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th style="padding-right: 5px" class="text-white">Feedback Id</th>
+        <th style="padding-right: 5px" class="text-white">Ticket Id</th>
+        <th style="padding-right: 5px" class="text-white">Customer Email</th>
+        <th style="padding-right: 5px" class="text-white">Feedback</th>
+      </tr>
+    </thead>
+    <br />
+    <tbody>
+      <tr *ngFor="let feedback of feedbacks">
+        <td style="padding-right: 5px" scope="row">
+          {{ feedback.feedbackId }}
+        </td>
+        <td style="padding-right: 5px" class="text-white">
+          {{ feedback.ticketId }}
+        </td>
+        <td style="padding-right: 5px" class="text-white">
+          {{ feedback.customerEmail }}
+        </td>
+        <td style="padding-right: 5px" class="text-white">
+          {{ feedback.feedback }}
+        </td>
+
+        <td>
+          <button (click)="deleteFeedback(feedback)" class="btn btn-danger">
+            <i class="fa fa-trash"></i>
+          </button>
+        </td>
+        <td>
+          <button (click)="updateFeedback(feedback)" class="btn btn-primary">
+            <i class="fa fa-edit"></i>
+          </button>
+        </td>
+      </tr>
+      <tr *ngIf="updateFeedbackStatus">
+        <div>
+          <form (ngSubmit)="newFeedbackUpdates()">
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                name="ticketId"
+                [(ngModel)]="feedbackUpdating.ticketId"
+                placeholder="Enter ticked Id"
+              />
+            </div>
+
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                name="customerEmail"
+                [(ngModel)]="feedbackUpdating.customerEmail"
+                placeholder="Enter email"
+              />
+            </div>
+
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                name="feedback"
+                [(ngModel)]="feedbackUpdating.feedback"
+                placeholder="Enter feedback"
+              />
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+          </form>
+        </div>
+      </tr>
+    </tbody>
+  </table>
+</div>
